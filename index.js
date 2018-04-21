@@ -1,3 +1,9 @@
+/*
+
+    Servers that handle everything
+
+*/
+
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
@@ -5,7 +11,11 @@ var url = require('url');
 var stringDecoder = require('string_decoder').StringDecoder;
 var config = require('./config');
 
-var users = require('./users');
+var lib = require('./lib/data');
+
+lib.delete('users','newUser2',function(data){
+    console.log(data);
+})
 
 //HTTP server
 http.createServer(function(request,response){
@@ -64,13 +74,12 @@ var unifiedServer = function(request,response){
 
     var handlers = {};
     handlers.home = function(data,callback){
-        callback(406,{message:'Welcome Home!'});
+        callback(406,{message: 'Url at the home directory'});
     };
 
     handlers.ping = function(data, callback){
-
-        callback(200, {message: 'Ping is here'})
-    }
+        callback(200, {message: 'Url at the ping directory'});
+    };
 
     handlers.notfound = function(data,callback){
         callback(404);

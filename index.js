@@ -1,11 +1,34 @@
+var fs = require('fs');
 var http = require('http');
+var https = require('https');
 var url = require('url');
 var stringDecoder = require('string_decoder').StringDecoder;
 var config = require('./config');
 
 var users = require('./users');
 
+//HTTP server
 http.createServer(function(request,response){
+    unifiedServer(request,response);
+}).listen(config.httpPort,function(){
+    console.log('listening at port ' + config.httpPort)
+});
+
+//HTTPS server
+var httpsServerOptions = {
+    'key': fs.readFileSync('./https/key.pem'),
+    'cert': fs.readFileSync('./https/cert.pem')
+};
+
+https.createServer(httpsServerOptions,function(request,response){
+    unifiedServer(request,response);
+}).listen(config.httpsPort,function(){
+    console.log('listening at port ' + config.httpsPort)
+});
+
+
+//Instantiating Servers
+var unifiedServer = function(request,response){
     var parsedUrl= url.parse(request.url,true);//url = {...,path: ''}
     var path = parsedUrl.path,//path = /home
     trimmedPath = path.replace(/^\/+|\/+s/g,'');//trimmedPath = home
@@ -44,14 +67,10 @@ http.createServer(function(request,response){
         callback(406,{message:'Welcome Home!'});
     };
 
-    handlers.user = function(data,callback){
-        user = users.find(function(currentUser){
-            return currentUser.id === parsedUrl.query.id
-        });
-        user = typeof(user)==='object'?user:{message:'user not found'};
+    handlers.ping = function(data, callback){
 
-        callback(406,user);
-    };
+        callback(200, {message: 'Ping is here'})
+    }
 
     handlers.notfound = function(data,callback){
         callback(404);
@@ -60,8 +79,6 @@ http.createServer(function(request,response){
 
     var router = {
         'home' : handlers.home,
-        'user' : handlers.user
+        'ping' : handlers.ping
     };
-}).listen(config.port,function(){
-    console.log(`Listening on port ${config.port} using env ${config.envName}`)
-});
+}

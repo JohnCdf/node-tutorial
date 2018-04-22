@@ -11,11 +11,9 @@ var url = require('url');
 var stringDecoder = require('string_decoder').StringDecoder;
 var config = require('./config');
 
+var helpers = require('./lib/helpers');
 var lib = require('./lib/data');
-
-lib.delete('users','newUser2',function(data){
-    console.log(data);
-})
+var handlers = require('./lib/handlers');
 
 //HTTP server
 http.createServer(function(request,response){
@@ -39,9 +37,9 @@ https.createServer(httpsServerOptions,function(request,response){
 
 //Instantiating Servers
 var unifiedServer = function(request,response){
-    var parsedUrl= url.parse(request.url,true);//url = {...,path: ''}
-    var path = parsedUrl.path,//path = /home
-    trimmedPath = path.replace(/^\/+|\/+s/g,'');//trimmedPath = home
+    var parsedUrl= url.parse(request.url,true);
+    var path = parsedUrl.pathname,
+    trimmedPath = path.replace(/^\/+|\/+$/g, '');
     
     var decoder = new stringDecoder('utf-8');
     var buffer = '';
@@ -49,19 +47,21 @@ var unifiedServer = function(request,response){
     request.on('data',function(data){//Steam handling
         buffer += decoder.write(data);
     });
-    request.on('end',function(data){
-        buffer += decoder.end(data);
+    request.on('end',function(){
+        buffer += decoder.end();
 
         var handler = typeof(router[trimmedPath]) !== 'undefined'?router[trimmedPath]:handlers.notfound;
-        var data = {
-            'path':path,
-            'payload':buffer,
-            'query':parsedUrl.query,
-            'method':request.method
-        };
 
+        var data = {
+            'headers' : request.headers,
+            'path':trimmedPath,
+            'payload':helpers.jsonToObj(buffer),//this will be the data we work on in the handlers
+            'query':parsedUrl.query,
+            'method':request.method.toLowerCase()
+        };
+        
         handler(data,function(statusCode,payload){
-            statusCode = typeof(statusCode) === 'number' ? statusCode : 200;
+            
             payload = typeof(payload) === 'object' ? payload : {};
 
             payloadString = JSON.stringify(payload);
@@ -72,22 +72,10 @@ var unifiedServer = function(request,response){
 
     });
 
-    var handlers = {};
-    handlers.home = function(data,callback){
-        callback(406,{message: 'Url at the home directory'});
-    };
-
-    handlers.ping = function(data, callback){
-        callback(200, {message: 'Url at the ping directory'});
-    };
-
-    handlers.notfound = function(data,callback){
-        callback(404);
-    };
-
 
     var router = {
         'home' : handlers.home,
-        'ping' : handlers.ping
+        'ping' : handlers.ping,
+        'users' : handlers.users
     };
 }

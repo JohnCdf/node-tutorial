@@ -12,7 +12,6 @@ var stringDecoder = require('string_decoder').StringDecoder;
 var config = require('./config');
 
 var helpers = require('./lib/helpers');
-var lib = require('./lib/data');
 var handlers = require('./lib/handlers');
 
 //HTTP server
@@ -51,23 +50,22 @@ var unifiedServer = function(request,response){
         buffer += decoder.end();
 
         var handler = typeof(router[trimmedPath]) !== 'undefined'?router[trimmedPath]:handlers.notfound;
-
+        
         var data = {
             'headers' : request.headers,
-            'path':trimmedPath,
-            'payload':helpers.jsonToObj(buffer),//this will be the data we work on in the handlers
-            'query':parsedUrl.query,
-            'method':request.method.toLowerCase()
+            'path' : trimmedPath,
+            'payload' : helpers.jsonToObj(buffer),//this will be the data we work on in the handlers
+            'query' : parsedUrl.query,
+            'method' : request.method.toLowerCase()
         };
-        
         handler(data,function(statusCode,payload){
-            payload = typeof(payload) === 'object' ? payload : {};
+            payload = typeof(payload) === 'object' ? payload : "";//is a js obj
 
             payloadString = JSON.stringify(payload);
 
             response.setHeader('Content-Type','application/json');
             response.writeHead(statusCode);
-            
+
             response.end(payloadString);
         });
 

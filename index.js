@@ -61,14 +61,14 @@ var unifiedServer = function(request,response){
         };
         
         handler(data,function(statusCode,payload){
-            
             payload = typeof(payload) === 'object' ? payload : {};
 
             payloadString = JSON.stringify(payload);
+
             response.setHeader('Content-Type','application/json');
             response.writeHead(statusCode);
+            
             response.end(payloadString);
-            //The End
         });
 
     });

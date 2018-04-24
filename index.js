@@ -68,6 +68,7 @@ var unifiedServer = function(request,response){
             response.setHeader('Content-Type','application/json');
             response.writeHead(statusCode);
             response.end(payloadString);
+            //The End
         });
 
     });
@@ -76,6 +77,8 @@ var unifiedServer = function(request,response){
     var router = {
         'home' : handlers.home,
         'ping' : handlers.ping,
-        'users' : handlers.users
+        'users' : handlers.users,
+        'tokens' : handlers.tokens,
+        'checks' : handlers.checks
     };
 }

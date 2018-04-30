@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header{
+  position:fixed;
+  top:0;
+  right:0;
+  left:0;
+  border-bottom:1px solid rgb(209, 209, 209);
+  display: inline-flex;
+  justify-content: space-between;
+  padding:0 10px;
+}
+.header .logo {
+  margin-right: auto;
+}
+.header ul {
+  height: 5vh;
+  margin:auto;
+  padding:0;
+  display: inline-flex;
+  margin-left: auto;
+  list-style: none;
+}
+.header ul li {
+  margin:auto 5px;
+}
+.header a {
+  text-decoration: none;
+  color: black;
+}
+.header li a {
+  color: black;
+}
+.wrapper {
+  text-align: center;
+  margin-top:5vh;
+  width:100%;
+}
+
+
+.footer {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right: 0;
+  background: rgb(37, 37, 37);
+  color: white;
+}
+.footer * {
+  line-height: 5vh;
+  margin:auto auto;
+}
+
+

@@ -7,23 +7,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{head.title} | {global.title}</title>
 
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="stylesheet.css">
+  <link type="image/x-icon" rel="icon" href="public/logo.png">
+  <link rel="stylesheet" href="public/app.css">
   <script> src="public/app.js"</script>
 </head>
 <body class={body.class}>
   <!--Opens up the body-->
   
 <div class="wrapper">
-
+<img src="public/logo.png" alt="">
 
   <div class="header">
-    <a href="/" class="logo"></a>
+    <a href="/" class="logo">
+    <img src="public/logo.png" alt=""></a>
     <ul class="menu">
-      <li><a href="/about"></a></li>
-      <li class="logged-in"><a href="/account/create"></a></li>
-      <li class="logged-out"><a href="/account/terminate"></a></li>
-      <li><a href="/"></a></li>
+      <li class="logged-out"><a href="/session/create">Sign In</a></li>
+      <li><a class="logged-out" href="/account/create">Sign Up</a></li>
+      <li class="logged-in"><a href="/session/terminate">Sign Out</a></li>
     </ul>
   </div>
 

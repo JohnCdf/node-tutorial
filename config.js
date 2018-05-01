@@ -12,8 +12,9 @@ enviorments.staging={
         'fromPhone' : '+15005550006'
     },
     'templateGlobals': {
-        'title':'UpWork',
-        'companyName' : 'UpWork INC',
+        'title':'Upwork',
+        'companyName' : 'Upwork INC',
+        'description' : 'Platform for users to share resources and ideas.',
         'yearCreated' : '2002',
         'global' : {}
     }

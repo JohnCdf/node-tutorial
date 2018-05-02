@@ -1,5 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color:rgb(39, 39, 39);
+  padding:0;
+  margin:0;
 }
 
 .header{
@@ -8,9 +11,11 @@ body {
   right:0;
   left:0;
   border-bottom:1px solid rgb(209, 209, 209);
+  background:white;
   display: inline-flex;
   justify-content: space-between;
   padding:0 10px;
+  z-index: 10;
 }
 .header .logo {
   margin-right: auto;
@@ -38,7 +43,33 @@ body {
   width:100%;
 }
 
+.content {
+  width:100%;
+}
 
+.hero {
+  min-height:82vh;
+  max-width: 100%;
+  background: rgb(243, 243, 243);
+  padding:1em;
+}
+.hero .vertical-content {
+  position: absolute;
+  top:25%;
+  bottom:25%;
+  left:0;
+  right:0;
+  margin:auto auto;
+  max-width: 50vh;
+}
+.hero hr {
+  border-color: rgb(83, 83, 83);
+  border-width: .5px;
+}
+#main-hero {
+  color:white;
+  background: url('https://i.pinimg.com/originals/d0/86/42/d0864223e34add22df0e118f8bd6c74a.jpg')
+}
 .footer {
   position:fixed;
   bottom:0;

@@ -14,9 +14,8 @@ enviorments.staging={
     'templateGlobals': {
         'title':'Upwork',
         'companyName' : 'Upwork INC',
-        'description' : 'Platform for users to share resources and ideas.',
-        'yearCreated' : '2002',
-        'global' : {}
+        'description' : 'Online platform for students to share resources and ideas amongst each other.',
+        'yearCreated' : '2002'
     }
 };
 

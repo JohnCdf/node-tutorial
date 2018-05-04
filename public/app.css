@@ -5,6 +5,15 @@ body {
   margin:0;
 }
 
+body.loggedIn .logged-out{
+  display:none;
+}
+body.loggedIn #logoutButton {
+  display: initial;
+}
+#logoutButton {
+  display:none;
+}
 .header{
   position:fixed;
   top:0;

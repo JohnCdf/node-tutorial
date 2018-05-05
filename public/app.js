@@ -86,7 +86,7 @@ app.bindForms = function(){
           payload[elements[i].name] = valueOfElement;
         }
       }
-console.log(payload)
+
       app.client.request(undefined,path,method,undefined,payload,function(statusCode,responsePayload){
         
         if(statusCode!=200){
@@ -158,6 +158,7 @@ app.getSessionToken = function(){
 // Set (or remove) the loggedIn class from the body
 app.setLoggedInClass = function(add){
   var target = document.querySelector("body");
+  
   if(add){
     target.classList.add('loggedIn');
   } else {
@@ -243,16 +244,13 @@ app.logUserOut = function () {
     window.location = '/home'
   }
 };
-// Init (bootstrapping)
+
 app.init = function(){
 
-  // Bind all form submissions
   app.bindForms();
 
-  // Get the token from localstorage
   app.getSessionToken();
 
-  // Renew token
   app.tokenRenewalLoop();
 
 };

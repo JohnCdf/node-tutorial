@@ -9,7 +9,7 @@ body.loggedIn .logged-out{
   display:none;
 }
 body.loggedIn #logoutButton {
-  display: initial;
+  display: block !important;
 }
 #logoutButton {
   display:none;

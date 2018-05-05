@@ -2,10 +2,11 @@
 
 <div class="formWrapper">
     <h1>Sign Up</h1>
-    <p>And start sharing.</p>
     <hr>
+    <div class="formError">And start sharing</div>
+    <br>
   <form id="accountCreate" action="/api/users" method="POST">
-    <div class="formError"></div>
+    
     <div>
       <div class="inputLabel">First Name</div>
       <input type="text" name="firstName" placeholder="John" />
@@ -16,7 +17,7 @@
     </div>
     <div>
       <div class="inputLabel">Phone Number</div>
-      <input type="text" name="phone" placeholder="(415) 123-4567" />
+      <input type="text" name="phone" placeholder="1231234567" />
     </div>
     <div>
       <div class="inputLabel">Choose a Password</div>

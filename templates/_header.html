@@ -10,7 +10,6 @@
   
   <title>{head.title} | {global.title}</title>
 
-  <link type="image/x-icon" rel="icon" href="public/logo.png">
   <link rel="stylesheet" href="public/app.css">
   <script> src="public/app.js"</script>
 </head>
@@ -22,10 +21,12 @@
 
   <div class="header">
     <a href="/" class="logo">
-    <img src="public/logo.png" alt=""></a>
+    <img src="public/logo.png" alt="">
+  </a>
+
     <ul class="menu">
+      <li><a href="/top-discussions">Popular</a></li>
       <li class="logged-out"><a href="/session/create">Sign In</a></li>
-      <li><a class="logged-out" href="/account/create">Sign Up</a></li>
       <li class="logged-in" id="logoutButton"><a onClick="app.logUserOut()">Sign Out</a></li>
     </ul>
   </div>

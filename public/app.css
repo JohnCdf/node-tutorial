@@ -5,15 +5,20 @@ body {
   margin:0;
 }
 
-body.loggedIn .logged-out{
-  display:none;
-}
 body.loggedIn #logoutButton {
   display: block;
+}
+body.loggedIn .loggedOut {
+  display:block;
+}
+
+.loggedOut {
+  display:none;
 }
 #logoutButton {
   display:none;
 }
+
 .formError {
   color: firebrick;
 }
@@ -66,7 +71,7 @@ body.loggedIn #logoutButton {
   padding:1em;
   filter: blur(5px);
     background-size:  90%  ; 
-    filter: brightness(0.70);
+    filter: brightness(0.85);
   transition: .2s all ease-in-out;
 }
 .hero:hover {

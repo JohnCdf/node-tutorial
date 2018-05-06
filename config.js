@@ -33,8 +33,8 @@ enviorments.production={
     },
     'templateGlobals': {
         'title':'UpWork',
-        'companyName' : 'UpWork INC',
-        'yearCreated' : '2002',
+        'companyName' : 'UpWork Inc',
+        'yearCreated' : '2018',
         'baseUrl' : 'http://localhost:3001/'//IMPORTANT: Base Url makes it so that all html GET requests are based off this dir. Example, instead of the URL of a request being 'account/create/logo.png', since the baseURL is 'localhost', it will not look for logo.png inside account/create. I dont know why.
     }
 }

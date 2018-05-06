@@ -1,7 +1,42 @@
-<h1>Account Settings</h1>
-<hr>
 <div class="formWrapper">
-  <form action="api/users"  method="POST">
+
+<h1>Edit Account</h1>
+<hr>
+<div class="formError">And continue sharing</div>
+<br>
+<form id="accountEdit" action="/api/users" method="post">
+  <input type="hidden" name="_method" value="put"/>
+  <div>
+      <div class="inputLabel">Phone Number*</div>
+      <input type="text" name="phone" placeholder="(415) 123-4567" class="phoneInput" readonly/>
+  </div>
+
+  <div>
+    <div class="inputLabel">First Name</div>
+    <input type="text" name="firstName" placeholder="John" class="firstNameInput"/>
+  </div>
+
+  <div>
+    <div class="inputLabel">Last Name</div>
+    <input type="text" name="lastName" placeholder="Smith" class="lastNameInput"/>
+  </div>
   
-  </form>
+  <div>
+    <div class="inputLabel">Password*</div>
+    <input type="password" name="password" placeholder="*********">
+    <input type="checkbox" onClick="app.showPassword(this)">Show password
+  </div>
+
+  <div>
+    <hr>
+    <div class="inputLabel">Change Password</div>
+    <input type="password" name="newPassword" placeholder="***********">
+    <input type="checkbox" onClick="app.showPassword(this)">Show Password
+  </div>
+  <div>
+    <br>
+    <input type="submit">
+  </div>
+</form>
+
 </div>

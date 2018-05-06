@@ -6,29 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   
   <title>{head.title} | {global.title}</title>
 
   <link rel="stylesheet" href="public/app.css">
+  <script src="public/animations.js"></script>
   <script> src="public/app.js"</script>
 </head>
-<body>
-  <!--Opens up the body-->
+<body class={body.class}>
   
 <div class="wrapper">
-<img src="public/logo.png" alt="">
 
   <div class="header">
-    <a href="/" class="logo">
-    <img src="public/logo.png" alt="">
-  </a>
 
     <ul class="menu">
-      <li><a href="/top-discussions">Popular</a></li>
-      <li class="logged-out"><a href="/session/create">Sign In</a></li>
-      <li class="logged-in" id="logoutButton"><a onClick="app.logUserOut()">Sign Out</a></li>
+      <li><a href="/popular">Popular</a></li>
+      <li class="loggedOut"><a href="/session/create">Sign In</a></li>
+      <li id="logoutButton"><a onClick="app.logUserOut()">Sign Out</a></li>
+          <a id="nav-icon">
+                  <span></span>
+                  <span></span>
+          </a>
+
     </ul>
+  </div>
+
+  <div class="menu_nav">
+      <ul>
+              <li><a href="/account/edit">
+              <span>
+                  Account Settings
+              </span></a></li>
+              <li><a href="/popular">
+              <span>
+                  Popular spaces
+              </span></a></li>
+              <li><a href="support">
+              <span>
+                  Support
+              </span></a></li>
+              <li>
+                      <input id="searchInput" placeholder="Search WorkSpace"/>
+              </li>
+      </ul>
   </div>
 
 

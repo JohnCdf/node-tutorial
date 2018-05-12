@@ -17,7 +17,6 @@ body.loggedIn .loggedOut {
 }
 
 .wrapper {
-  text-align: center;
   padding-top:44px;
   width:100%;
 }
@@ -229,10 +228,11 @@ body.loggedIn .loggedOut {
   right: 0;
   background: rgb(37, 37, 37);
   color: white;
+  display: inline-flex;
+  justify-content: center;
 }
 .footer > * {
   line-height: 7vh;
-  margin:auto auto;
 }
 
 

@@ -130,10 +130,9 @@ app.formResponseProcessor = function (formId, request, response) {
 
   if(formId == 'sessionCreate'){
     app.setSessionToken(response);
-    window.location = '/dashboard';
+    window.location = '/popular';
   }
 
-  console.log(formId)
   if(formId == 'accountEdit') {
     $(".formError").text("Saved Changes!")
   }
@@ -178,8 +177,14 @@ app.logUserOut = function () {
 
 app.loadPageData = function () {
   if( $("body").hasClass("accountEdit") ) {
+
     app.loadAccountEdit()
-  } else if ( $("body").hasClass("dashboard") ) {
+
+  } else if ( $("body").hasClass("home") ) {
+
+    if(app.config.sessionToken){
+      window.location = '/popular'
+    }
 
   }
 };
